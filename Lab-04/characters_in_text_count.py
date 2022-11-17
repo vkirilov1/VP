@@ -1,9 +1,8 @@
 text = input("Enter text: ")
 
-characters = list(text)
 dic = dict()
 
-for character in characters:
+for character in text:
     if character in dic:
         dic[character] += 1
     else:
