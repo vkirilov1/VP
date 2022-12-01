@@ -8,10 +8,10 @@ class Animal:
         self.food_type = food_type
 
         def make_sound():
-            return
+            pass
 
         def eat_food():
-            return
+            pass
 
 
 class Cat(Animal):
@@ -54,9 +54,10 @@ class Duck(Animal):
     def make_sound(self):
         print("Quack!")
 
-    def eat_food(self, food_count, random_food):
+    def eat_food(self, food_count):
+        random_food = random.randint(1, 9)
         if food_count <= 0:
-            food_count = 0
+            food_count -= random_food
             return food_count
         else:
             self.make_sound()
@@ -84,7 +85,7 @@ class Horse(Animal):
 
 
 animals_list = []
-food = {"fish":90, "dog_food":55, "fish_food":50, "horse_food":40}
+food_dict = {"fish":200, "dog_food":100, "fish_food":80, "horse_food":120}
 
 cat1 = Cat("Elizabeth", 2, "fish")
 cat2 = Cat("Ivan", 5, "fish")
@@ -108,39 +109,11 @@ animals_list.append(duck3)
 animals_list.append(horse1)
 animals_list.append(horse2)
 
-for i in range(0, 10):
-    print("=======")
+for i in range(10):
+    print("======")
     for n in animals_list:
-
-        if isinstance(n, Cat):
-            fish_count = 10
-            if fish_count >= food["fish"]:
-                fish_count = 0
-            food["fish"] = n.eat_food(food["fish"])
-            print(f"{n.name} the {n.__class__.__name__} just ate {fish_count} {n.food_type}, there's {food['fish']} left")
-            
-        elif isinstance(n, Dog):
-            quantity = 5
-            if quantity > food["dog_food"]:
-                quantity = 0
-            food["dog_food"] = n.eat_food(food["dog_food"], quantity)
-            print(f"{n.name} the {n.__class__.__name__} just ate {quantity} {n.food_type}, there's {food['dog_food']} left")
-            
-        elif isinstance(n, Duck):
-            random_food = random.randint(1, 9)
-            if random_food >= food["fish_food"]:
-                food["fish_food"] = 0
-                random_food = 0
-
-            food["fish_food"] = n.eat_food(food["fish_food"], random_food)
-            print(f"{n.name} the {n.__class__.__name__} just ate {random_food} {n.food_type}, there's {food['fish_food']} left")
-            
-        elif isinstance(n, Horse):
-            horse_food = 16
-            if horse_food > food["horse_food"]:
-                horse_food = 8
-            if horse_food > food["horse_food"]:
-                horse_food = 0
-                food["horse_food"] = 0
-            food["horse_food"] = n.eat_food(food["horse_food"])
-            print(f"{n.name} the {n.__class__.__name__} just ate {horse_food} {n.food_type}, there's {food['horse_food']} left")
+        food_dict[n.food_type] = n.eat_food(food_dict[n.food_type])
+        if food_dict[n.food_type] <= 0:
+            print(f"{n.name} the {n.__class__.__name__} just ate 0 {n.food_type}, there's 0 left.")
+        else:
+            print(f"{n.name} the {n.__class__.__name__} just ate {food_dict[n.food_type] - n.eat_food(food_dict[n.food_type])} {n.food_type}, there's {food_dict[n.food_type]} left. ")
