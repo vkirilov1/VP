@@ -134,7 +134,7 @@ class Lemur(JungleAnimal):
             print(f"{self.name} the ate a full meal of 10 fruits")
             return count
         elif 0 < count < 10:
-            print(f"{self.name} the Lemur could only find {count}")
+            print(f"{self.name} the Lemur could only find {count} fruits")
             count = 0
             return count
         elif count <= 0:
