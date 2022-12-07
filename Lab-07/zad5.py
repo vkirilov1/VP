@@ -262,7 +262,6 @@ for anim in animals:
         anim.daily_task(animals)
     elif anim.__class__.__name__ == "Lemur":
         fruits = anim.daily_task(fruits)
-        anim.daily_task(fruits)
     elif anim.__class__.__name__ == "Human":
         anim.daily_task(animals, buildings)
 
