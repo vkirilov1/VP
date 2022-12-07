@@ -181,12 +181,12 @@ class Human(JungleAnimal):
                         new_building = Building("building1")
                         buildings_list.append(new_building)
 
-                if i == len(animals_list):
+                elif i == len(animals_list):
                     if animals_list[i-1].__class__.__name__ == "Human":
                         new_building = Building("building2")
                         buildings_list.append(new_building)
 
-                if animals_list[i-1].__class__.__name__ == "Human" and animals_list[i+1].__class__.__name__ == "Human":
+                elif animals_list[i-1].__class__.__name__ == "Human" and animals_list[i+1].__class__.__name__ == "Human":
                     new_building = Building("building")
                     buildings_list.append(new_building)
 
