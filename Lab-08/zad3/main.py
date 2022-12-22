@@ -49,9 +49,13 @@ class Menu:
                     name = input("Enter weapon name (must be at least 4 letters): ")
                     if len(name) < 4:
                         raise errors.InvalidDataFormat("Error! Name must be at least 4 letters long!")
+                    elif any(char.isdigit() for char in name):
+                        raise errors.InvalidDataFormat("Error! Weapon name can't contain numbers!")
 
                     damage = int(input("Enter weapon damage (must be positive number): "))
-                    if 0 > damage:
+                    if type(damage) == str:
+                        raise errors.InvalidDataFormat("Error! Damage must be a number!")
+                    elif 0 > damage:
                         raise errors.InvalidDataFormat("Error! Damage can't be below zero!")
 
                     ch_name = input("Enter the name of the character you want to equip this weapon to: ")
@@ -69,6 +73,8 @@ class Menu:
                     name = input("Enter item name (must be at least 4 letters): ")
                     if len(name) < 4:
                         raise errors.InvalidDataFormat("Error! Name must be at least 4 letters long!")
+                    elif any(char.isdigit() for char in name):
+                        raise errors.InvalidDataFormat("Error! Item name can't contain numbers!")
 
                     ch_name = input("Enter the name of the character you want to equip this item to: ")
 
