@@ -1,0 +1,1 @@
+Person(Ivan, 15, programmer)
